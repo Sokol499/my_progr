@@ -1,65 +1,66 @@
 ﻿#include <iostream>
 using namespace std;
 
+template <class T>
 class VectorClass
 {
-    int* arr;
-    int capacity; // Размер буффера
+    int* arr_;
+    int capacity_; // Размер буффера
     int size_; // Текущее количество элементов, которое присутствует в векторе.
 
     void makeBigger()
     {
-        int* temp = new int[2 * capacity];
-        for (int i = 0; i < capacity; i++)
+        T* temp = new T[2 * capacity_];
+        for (int i = 0; i < capacity_; ++i)
         {
-            temp[i] = arr[i];
+            temp[i] = arr_[i];
         }
 
-        delete[] arr;
-        capacity *= 2;
-        arr = temp;
+        delete[] arr_;
+        capacity_ *= 2;
+        arr_ = temp;
     }
 public:
     VectorClass()
     {
-        arr = new int[1];
-        capacity = 1;
+        arr_ = new T[1];
+        capacity_ = 1;
         size_ = 0;
     }
 
     VectorClass(const VectorClass& other)
     {
-        capacity = other.capacity;
+        capacity_ = other.capacity_;
         size_ = other.size_;
-        arr = new int[capacity];
-        for (int i = 0; i < capacity; i++)
+        arr_ = new T[capacity_];
+        for (int i = 0; i < capacity_; ++i)
         {
-            arr[i] = other.arr[i];
+            arr_[i] = other.arr_[i];
         }
     }
 
-    void push(int data)
+    void push(T data)
     {
-        if (size_ == capacity)
+        if (size_ == capacity_)
         {
             makeBigger();
         }
-        arr[size_] = data;
-        size_++;
+        arr_[size_] = data;
+        ++size_;
     }
 
-    int& operator[](int index) const
+    T& operator[](T index) const
     {
-        return arr[index];
+        return arr_[index];
     }
 
-    int get(int index) const
+    T get(T index) const
     {
         if (index < size_)
         {
-            return arr[index];
+            return arr_[index];
         }
-        return arr[0];
+        return arr_[0];
     }
 
     void pop()
@@ -67,28 +68,28 @@ public:
         --size_;
     }
 
-    int size() const
+    T size() const
     {
         return size_;
     }
 
-    int getCapacity() const
+    T getCapacity() const
     {
-        return capacity;
+        return capacity_;
     }
 
     void print() const
     {
-        for (int i = 0; i < size_; i++)
+        for (int i = 0; i < size_; ++i)
         {
-            cout << arr[i] << " ";
+            cout << arr_[i] << " ";
         }
         cout << endl;
     }
 
     ~VectorClass()
     {
-        delete[] arr;
+        delete[] arr_;
     }
 
     bool operator==(const VectorClass& other) const
@@ -99,7 +100,7 @@ public:
         }
         for (int i = 0; i < size_; ++i)
         {
-            if (arr[i] != other.arr[i])
+            if (arr_[i] != other.arr_[i])
             {
                 return false;
             }
@@ -111,31 +112,5 @@ public:
 
 int main()
 {
-    VectorClass v;
-    v.push(10);
-    v.push(20);
-    v.push(30);
-    v.push(40);
-    v.push(50);
-    v.push(60);
-    v.push(70);
-
-    cout << "Vector size : " << v.size() << endl;
-    cout << "Vector capacity : " << v.getCapacity() << endl;
-    cout << "Vector elements : ";
-
-    v.print();
-    v[1] = 100;
-
-    cout << "\nAfter updating 1st index" << endl;
-    cout << "Vector elements : ";
-    v.print();
-    cout << "Element at 1st index : " << v.get(1) << endl;
-    v.pop();
-    cout << "\nAfter deleting last element" << endl;
-    cout << "Vector size : " << v.size() << endl;
-    cout << "Vector capacity : " << v.getCapacity() << endl;
-    cout << "Vector elements : ";
-    v.print();
     return 0;
 }
