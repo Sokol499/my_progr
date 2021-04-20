@@ -10,7 +10,7 @@ bool compare(const T& a, const T& b)
 template <class T>
 void Merge(T* arr, int left, int right) // функция , которая сливает массив
 {
-    int middle , iterator_left_part, iterator_right_part , j;
+    int middle, iterator_left_part, iterator_right_part, j;
     int* array = new T[right - left + 1];
     middle = (left + right) / 2; // вычисление среднего элемента
     iterator_left_part = left; // начало левой части
@@ -30,7 +30,7 @@ void Merge(T* arr, int left, int right) // функция , которая сл�
     }
     for (j = left; j < right; j++) // возврат результата
     {
-        arr[j] = array[j];
+        arr[j] = array[j - left];
     }
     delete[] array;
 };
