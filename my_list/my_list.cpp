@@ -44,11 +44,11 @@ public:
     {
         if (size_ == 0)
         {
-            return "True";
+            return true;
         }
         else
         {
-            return "False";
+            return false;
         }
     }
 
