@@ -32,20 +32,23 @@ public:
         size_ = 1;
     }
 
-    List(T& vec)
+    List(const std::vector<T>& vec)
     {
-        vec.push_back(vector <T>());
+        for (int i = 0; i < vec.size(); ++i)
+        {
+            push_back(vec[i]);
+        }
     }
 
     bool isEmpty()
     {
-        if (List.isEmpty())
+        if (size_ == 0)
         {
-            cout << "True";
+            return "True";
         }
         else
         {
-            cout << "False";
+            return "False";
         }
     }
 
@@ -145,7 +148,5 @@ public:
 
 int main()
 {
-    List<int> list;
-    std::cout << "hello" << endl;
     return 0;
 }
