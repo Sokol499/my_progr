@@ -2,16 +2,24 @@
 #include <stack>
 using namespace std;
 
+template <class T>
 class Queue
 {
 private:
-    stack <int> s1_;
-    stack <int> s2_;
+    stack<T> s1_;
+    stack<T> s2_;
 public:
-    void push(int k)
+    Queue(const Queue<T>& other)
+    {
+        s1_ = other.s1_;
+        s2_ = other.s2_;
+    }
+
+    void push(T k)
     {
         s1_.push(k);
     }
+
     void pop()
     {
         if (s2_.empty())
@@ -23,8 +31,7 @@ public:
             }
             s2_.pop();
         }
-    };
-
+    }
     void print()
     {
         while (!s1_.empty())
@@ -44,46 +51,5 @@ public:
 
 int main()
 {
-    Queue q;
-    q.push(1);
-    q.push(2);
-    q.push(3);
-    q.push(4);
-    q.push(5);
-    q.push(6);
-
-    q.print();
-    cout << endl;
-
-    //удаляем элемент очереди
-    q.pop();
-    q.print();
-    cout << endl;
-
-    //удаляем элемент очереди
-    q.pop();
-    q.print();
-    cout << endl;
-
-    //удаляем элемент очереди
-    q.pop();
-    q.print();
-    cout << endl;
-
-    //удаляем элемент очереди
-    q.pop();
-    q.print();
-    cout << endl;
-
-    //удаляем элемент очереди
-    q.pop();
-    q.print();
-    cout << endl;
-
-    //удаляем элемент очереди
-    q.pop();
-    q.print();
-    cout << endl;
-
     return 0;
 }
