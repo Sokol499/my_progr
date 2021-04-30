@@ -29,8 +29,8 @@ public:
                 s2_.push(s1_.top());
                 s1_.pop();
             }
-            s2_.pop();
         }
+        s2_.pop();
     }
     void print() const
     {
