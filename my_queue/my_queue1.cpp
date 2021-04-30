@@ -32,19 +32,24 @@ public:
             s2_.pop();
         }
     }
-    void print()
+    void print() const
     {
-        while (!s1_.empty())
+        stack s1_copy = s1_;
+        stack s2_copy = s2_;
+        while (!s2_copy.empty())
         {
-            s2_.push(s1_.top());
-            s1_.pop();
+            cout << s2_copy.top() << ' ';
+            s2_copy.pop();
         }
-        //вывод элементов
-        while (!s2_.empty())
+        while (!s1_copy.empty())
         {
-            cout << s2_.top() << ' ';
-            s1_.push(s2_.top());
-            s2_.pop();
+            s2_copy.push(s1_copy.top());
+            s1_copy.pop();
+        }
+        while (!s2_copy.empty())
+        {
+            cout << s2_copy.top() << ' ';
+            s2_copy.pop();
         }
     }
 };
