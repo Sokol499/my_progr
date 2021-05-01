@@ -35,29 +35,43 @@ private:
         {
             int first_child = k * 2 + 1;
             int second_child = k * 2 + 2;
-            if (first_child < arr_.size())
+            if (first_child > arr_.size() > second_child)
             {
                 if (arr_[first_child] > arr_[k])
                 {
                     std::swap(arr_[first_child], arr_[k]);
                     k = first_child;
                 }
-                if (second_child < arr_.size())
+            }
+            else
+            {
+                return;
+            }
+            if (second_child > arr_.size() > first_child)
+            {
+                if (arr_[second_child] > arr_[k])
                 {
-                    if (arr_[second_child] > arr_[k])
-                    {
-                        std::swap(arr_[second_child], arr_[k]);
-                        k = second_child;
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    std::swap(arr_[second_child], arr_[k]);
+                    k = second_child;
                 }
             }
             else
             {
                 return;
+            }
+            if (arr_.size() > first_child && arr_.size() > second_child)
+            {
+                exit(0);
+            }
+            if (first_child > second_child)
+            {
+                std::swap(arr_[first_child], arr_[k]);
+                k = first_child;
+            }
+            else if (first_child < second_child)
+            {
+                std::swap(arr_[second_child], arr_[k]);
+                k = second_child;
             }
         }
     }
