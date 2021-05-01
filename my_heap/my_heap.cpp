@@ -35,7 +35,7 @@ private:
         {
             int first_child = k * 2 + 1;
             int second_child = k * 2 + 2;
-            if (first_child > arr_.size() > second_child)
+            if (first_child < arr_.size() && arr_.size() < second_child)
             {
                 if (arr_[first_child] > arr_[k])
                 {
@@ -47,7 +47,7 @@ private:
             {
                 return;
             }
-            if (second_child > arr_.size() > first_child)
+            if (second_child >= arr_.size() && arr_.size() > first_child)
             {
                 if (arr_[second_child] > arr_[k])
                 {
@@ -107,10 +107,3 @@ int main()
 {
     return 0;
 }
-
-
-
-
-
-
-            
