@@ -1,10 +1,10 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 template <class T>
 class VectorClass
 {
-    int* arr_;
+    T* arr_;
     int capacity_; // Размер буффера
     int size_; // Текущее количество элементов, которое присутствует в векторе.
 
