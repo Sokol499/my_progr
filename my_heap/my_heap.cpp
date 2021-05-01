@@ -51,14 +51,32 @@ private:
             {
                 if (arr_[first_child] > arr_[second_child])
                 {
-                    std::swap(arr_[first_child], arr_[k]);
-                    k = first_child;
+                    if (arr_[first_child] > arr_[k])
+                    {
+                        std::swap(arr_[first_child], arr_[k]);
+                        k = first_child;
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
-                else if (arr_[first_child] < arr_[second_child])
+                else if (arr_[first_child] <= arr_[second_child])
                 {
-                    std::swap(arr_[second_child], arr_[k]);
-                    k = second_child;
+                    if (arr_[second_child] > arr_[k])
+                    {
+                        std::swap(arr_[first_child], arr_[k]);
+                        k = first_child;
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
+            }
+            if (first_child >= arr_.size() && second_child >= arr_.size())
+            {
+                return;
             }
         }
     }
