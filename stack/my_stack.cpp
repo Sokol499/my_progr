@@ -62,7 +62,7 @@ public:
 	{
 		delete[] buffer_;
 	}
-	void Print() const
+	void Print()
 	{
 		cout << endl;
 		cout << "size_ = " << size_ << endl;
@@ -78,5 +78,26 @@ public:
 
 int main()
 {
+	Stack<int> st;
+	st.push(1);
+	st.push(2);
+	st.push(3);
+	cout << st.top() << " ?= 3" << endl;
+	st.pop();
+	cout << st.top() << " ?= 2" << endl;
+	st.push(8);
+	cout << st.top() << " ?= 8" << endl;
+	st.pop();
+	for (int i = 3; i < 99; ++i)
+	{
+		st.push(i);
+	}
+	st.Print();
+
+	for (int i = 3; i < 99; ++i)
+	{
+		st.pop();
+	}
+	st.Print();
 	return 0;
 }
