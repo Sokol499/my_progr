@@ -1,5 +1,6 @@
-п»ї#include <iostream>
+#include <iostream>
 #include <vector>
+
 
 
 class BigInteger
@@ -12,13 +13,13 @@ class BigInteger
 	std::vector<unsigned int> number_;
 
 public:
-	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ -- РєРѕРіРґР° РЅРµС‚ РЅРёРєР°РєРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ (РІРµРєС‚РѕСЂ РїСѓСЃС‚)
-	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ explicit BigInteger(const BigInteger& another);
-	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРјРµС‰РµРЅРёСЏ explicit BigInteger(BigInteger&& another);
-	// СЃСЂР°РІРЅРµРЅРёРµ С‡РёСЃРµР» isLess
+	// конструктор по умолчанию -- когда нет никакого значения (вектор пуст)
+	// конструктор копирования explicit BigInteger(const BigInteger& another);
+	// конструктор перемещения explicit BigInteger(BigInteger&& another);
+	// сравнение чисел isLess
 	// bool isLess(const BigInteger& another);
-	// РїРѕРґСѓРјР°С‚СЊ РєР°Рє Р±СѓРґРµС‚ СЂР°Р±РѕС‚Р°С‚СЊ СЃР»РѕР¶РµРЅРёРµ / РІС‹С‡РёС‚Р°РЅРёРµ
-	// РїРѕРґСѓРјР°С‚СЊ, РєР°Рє Р±СѓРґРµС‚ РІС‹РіР»СЏРґРµС‚СЊ РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+	// подумать как будет работать сложение / вычитание
+	// подумать, как будет выглядеть деструктор
 	explicit BigInteger(int num)
 	{
 		if (num < 0)
